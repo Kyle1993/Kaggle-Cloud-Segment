@@ -1,7 +1,7 @@
 # Kaggle Earthquake Predict
 
-__Competitions:__ [Understanding Clouds from Satellite Images](https://www.kaggle.com/c/understanding_cloud_organization)
-__Rank:__ 72/1538 (Top 4.6%, silver)  
+__Competitions:__ [Understanding Clouds from Satellite Images](https://www.kaggle.com/c/understanding_cloud_organization)  
+__Rank:__ 72/1538 (Top 4.6%, silver) 
 __Task:__ Image multi-class segmentation  
 __Data:__ trainset:5546 2100\*1400 cloud images, testset:3698 2100\*1400 cloud images  
 __Note:__ This is a code backup, it's not runable due to the difference file path  
