@@ -106,20 +106,6 @@ class FocalLoss2d2(nn.Module):
         # print(res)
         return res.mean()
 
-# class FocalBCEDiceLoss(nn.Module):
-#     def __init__(self, eps=1e-7, gamma=2, activation='sigmoid'):
-#         super(FocalBCEDiceLoss,self).__init__()
-#         self.focal1 = FocalLoss2d(gamma=gamma,activation=activation)
-#         self.focal2 = FocalLoss2d2(gamma=gamma,activation=activation)
-#
-#         self.dice = DiceLoss(eps=eps,activation=activation)
-#
-#     def forward(self, y_pr, y_gt):
-#         dice = self.dice(y_pr, y_gt)
-#         focal = self.focal1(y_pr, y_gt)
-#         print(self.focal1(y_pr,y_gt),self.focal2(y_pr,y_gt))
-#         return dice + focal
-
 class FocalBCEDiceLoss(nn.Module):
     def __init__(self, eps=1e-7, gamma=2, activation='sigmoid'):
         super(FocalBCEDiceLoss,self).__init__()

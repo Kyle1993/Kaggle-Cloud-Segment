@@ -23,13 +23,6 @@ def load_model(model_name, classes, dropout, pretrained):
     else:
         raise Exception('Error Model Name!')
 
-# class Cloud_Unet(nn.Module):
-#     def __init__(self,encoder_name,encoder_weights,classes):
-#         super(Cloud_Unet,self).__init__()
-#         self.net = smp.Unet(encoder_name=encoder_name,encoder_weights=encoder_weights,classes=classes)
-#         self.net.forward =
-
-
 class Cloud_Resnet50(nn.Module):
     def __init__(self,classes,dropout=None,pretrained=True):
         super(Cloud_Resnet50,self).__init__()

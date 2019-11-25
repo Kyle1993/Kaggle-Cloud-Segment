@@ -57,21 +57,6 @@ config['encoder_weights'] = param[config['ENCODER']]['encoder_weights']
 
 locals().update(config)
 
-# if ENCODER == 'resnext101_32x8d':
-#     BATCH_SIZE = len(device_ids) * 3
-# elif ENCODER == 'resnet34':
-#     BATCH_SIZE = len(device_ids) * 16
-# elif ENCODER == 'efficientnet-b3':
-#     BATCH_SIZE = len(device_ids) * 6
-# elif ENCODER == 'densenet161':
-#     BATCH_SIZE = len(device_ids) * 8
-# elif ENCODER == 'densenet169':
-#     BATCH_SIZE = len(device_ids) * 10
-# elif ENCODER == 'resnet50':
-#     BATCH_SIZE = len(device_ids) * 12
-# else:
-#     raise Exception('Error ENCODER!')
-
 train_csv = os.path.join(DATA_PATH,'train.csv')
 kfold_path = 'kfold.pkl'
 data_path = '/home/jianglb/pythonproject/cloud_segment/data/train_{}_{}'.format(*RESIZE)
@@ -91,7 +76,7 @@ with open(os.path.join(save_dir,'config.pkl'),'wb') as f:
 print(save_dir)
 
 mean_loss = 0
-for fold in [4]:
+for fold in range(K):
     if MODEL == 'UNET':
         model = smp.Unet(encoder_name=ENCODER, encoder_weights=encoder_weights,classes=4, activation='sigmoid', ED_drop=ED_drop)
     elif MODEL == "FPN":
@@ -129,9 +114,6 @@ for fold in [4]:
             np.save('masks.npy',masks.detach().cpu().numpy(),allow_pickle=True)
             np.save('outputs.npy', outputs.detach().cpu().numpy(),allow_pickle=True)
             loss = criterion(outputs, masks)
-            # loss1 = criterion(outputs, masks)
-            # loss2 = (outputs>0.5).sum() - (masks>0.5).sum()
-            # loss = loss1 + loss2
             optimizer.zero_grad()
             if use_apex:
                 with amp.scale_loss(loss, optimizer) as scaled_loss:

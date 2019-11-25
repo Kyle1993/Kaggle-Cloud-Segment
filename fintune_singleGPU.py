@@ -45,9 +45,9 @@ with open(os.path.join(save_dir,'config'), 'w') as f:
 
 
 agent = Agent(username='jlb', password='123',port=5005)
-# train_config = config.copy()
-# train_config['phase'] = 'train'
-# train_loss_record = agent.register(train_config,'loss',overwrite=True)
+train_config = config.copy()
+train_config['phase'] = 'train'
+train_loss_record = agent.register(train_config,'loss',overwrite=True)
 validate_config = config.copy()
 validate_config['phase'] = 'validate'
 validate_loss_record = agent.register(validate_config,'loss',overwrite=True)
@@ -92,8 +92,8 @@ for epoch in range(NUM_EPOCH):
         masks = masks.float().cuda(GPU)
         outputs = model(imgs)
         loss = criterion(outputs, masks)
-        # if epoch>0: # skip unstable phase
-        #     agent.append(train_loss_record, global_step, loss.item())
+        if epoch>0: # skip unstable phase
+            agent.append(train_loss_record, global_step, loss.item())
 
         optimizer.zero_grad()
         loss.backward()

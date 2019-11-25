@@ -33,10 +33,7 @@ kfold_path = 'kfold.pkl'
 
 time_str = time.strftime("%m%d-%H%M", time.localtime())
 
-'''
-FPN enb3
-不同gamma
-'''
+
 config = {'MODEL':'FPN',
           'ENCODER':'densenet201', #efficientnet-b3, resnet34, resnext101_32x8d, resnext101_32x16d,
           'encoder_weights':'imagenet', # instagram
@@ -99,7 +96,6 @@ if len(device_ids) > 1:
 min_loss = 1
 early_stop_counter = 0
 for epoch in range(NUM_EPOCH):
-    # print('Epoch:',epoch)
     dataset = CloudTrainDataset2(train_csv, data_path, kfold_path, FOLD, phase='train', transform_type=0,preprocessing=utils.get_preprocessing(preprocessing_fn),)
     dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS)
     train_num = len(dataset)

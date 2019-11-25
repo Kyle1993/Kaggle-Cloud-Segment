@@ -37,11 +37,6 @@ tg_classes = np.load(os.path.join(SAVE_PATH,'tg','tg_classes.npy'))
 
 cls_threshold, seg_threshold, cpn_threshold, best_dice = utils.search_threshold(tg_masks,seg_probs,tg_classes,cls_probs)
 
-# cls_threshold = [0.4, 0.4, 0.4, 0.4]
-# seg_threshold = [0.5, 0.5, 0.5, 0.5]
-# cpn_threshold = [25000, 20000, 25000, 10000]
-# best_dice = [0.6208261045509903, 0.7649952469320047, 0.6188291453734969, 0.6120651802644084]
-
 with open(os.path.join(save_dir,'config'),'a') as f:
     f.write('\n\ncls_threshold:{}\nseg_threshold:{}\ncpn_threshold:{}\nbest dice:{}\ncv dice:{}'.format(cls_threshold,seg_threshold,cpn_threshold,best_dice,np.mean(best_dice)))
 

@@ -323,13 +323,6 @@ def make_mask(label, img_size, dtype=np.float):
     mask = mask.transpose((1,2,0))
     return mask
 
-# def dict_merge(dl):
-#     assert len(dl) > 1
-#     res = dl[0].copy()
-#     for d in dl[1:]:
-#         res.update(d)
-#     return res
-
 def dice_float(img1,img2):
     img1 = np.asarray(img1).astype(np.float)
     img2 = np.asarray(img2).astype(np.float)

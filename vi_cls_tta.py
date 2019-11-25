@@ -99,8 +99,6 @@ with torch.no_grad():
 cls_probs = np.concatenate(cls_probs,axis=0)
 cloud_class /= (K * 4)
 
-# print(cloud_mask.max(),cloud_mask.min())
-
 del validate_dataset
 del validate_dataloader
 del imgs

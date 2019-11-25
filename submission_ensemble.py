@@ -11,17 +11,6 @@ from global_parameter import *
 base_folder = 'submits'
 ensmeble_fold = 'Ensemble14_mean_1118-1530'
 cls_fold = 'Ensemble5_max_1116-2332'
-'''
-0 0.4 0.7417508417508417
-1 0.4 0.8130671506352088
-2 0.4 0.7535063678865066
-3 0.4 0.8459770114942529
-
-0 0.4 0.7338484300509617
-1 0.4 0.8106151990349819
-2 0.4 0.7497996473793878
-3 0.4 0.843565311783862
-'''
 
 
 time_str = time.strftime("%m%d-%H%M", time.localtime())
@@ -43,19 +32,14 @@ tg_classes = np.load(os.path.join(SAVE_PATH,'tg','tg_classes.npy'))
 
 cls_threshold, seg_threshold, cpn_threshold, best_dice = utils.search_threshold(tg_masks,seg_probs,tg_classes,cls_probs)
 
-# cls_threshold = [0.5, 0.5, 0.5, 0.5]
-# seg_threshold = [0.6, 0.6, 0.6, 0.6]
-# cpn_threshold = [20000, 20000, 20000, 20000]
-# best_dice = [0.6208261045509903, 0.7649952469320047, 0.6188291453734969, 0.6120651802644084]
-
 with open(os.path.join(save_dir,'config'),'a') as f:
     f.write('\n\ncls_threshold:{}\nseg_threshold:{}\ncpn_threshold:{}\nbest dice:{}\ncv dice:{}'.format(cls_threshold,seg_threshold,cpn_threshold,best_dice,np.mean(best_dice)))
 
-# del seg_probs
-# del cls_probs
-# del tg_masks
-# del tg_classes
-# gc.collect()
+del seg_probs
+del cls_probs
+del tg_masks
+del tg_classes
+gc.collect()
 
 # generate submission
 print('generating submission.csv...')
