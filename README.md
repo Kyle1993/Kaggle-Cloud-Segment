@@ -1,4 +1,4 @@
-# Kaggle Earthquake Predict
+# Kaggle Cloud Segmentation
 
 __Competitions:__ [Understanding Clouds from Satellite Images](https://www.kaggle.com/c/understanding_cloud_organization)  
 __Rank:__ 72/1538 (Top 4.6%, silver) 
